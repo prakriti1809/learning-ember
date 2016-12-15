@@ -1,0 +1,33 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Flint",
+      "price": 99,
+      "description": "Flint is...",
+      "isOnSale": true,
+      "image": "flint.png",
+      "reviews": [100, 101]
+    },
+    {
+      "id": 2,
+      "title": "Kindling",
+      "price": 249,
+      "description": "Easily...",
+      "isOnSale": false,
+      "image": "kindling.png"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 100,
+      "product": 1,
+      "text": "Started a fire in no time!"
+    },
+    {
+      "id": 101,
+      "product": 1,
+      "text": "Not the brightest flame, but warm!"
+    }
+  ]
+}

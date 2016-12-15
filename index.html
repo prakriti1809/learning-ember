@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning Ember</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script src="handlebars-v4.0.5.js"></script>
+    <script src="ember-template-compiler.js"></script>
+    <script src="ember.js"></script>
+    <script src="ember-data.js"></script>
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<script type="text/x-handlebars" data-template-name="application">
+    <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+            {{#link-to 'index' class='navbar-brand' tagName='li'}}Homepage{{/link-to}}
+            {{#link-to 'about' class='navbar-brand' tagName='li'}}About{{/link-to}}
+            {{#link-to 'products' class='navbar-brand' tagName='li'}}Products{{/link-to}}
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="container">{{outlet}}</div>
+    </div>
+    <footer class="container"></footer>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+    <h1>Welcome to The Flint & Flame!</h1>
+    <p>There are {{productsCount}} products</p>
+    <img {{bind-attr src="logo"}} alt="Logo">
+    <p>Current time: {{time}}</p>
+    {{#each onSale}}
+        <span class="label label-warning">
+            {{#link-to 'products.onsale'}}On Sale{{/link-to}}
+        </span>
+    {{/each}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="about">
+    <h1>About The Fire Spirits</h1>
+</script>
+
+<script type="text/x-handlebars" data-template-name="products">
+    <div class="col-sm-3">
+        <div class="list-group">
+            {{#each}}
+                {{#link-to 'product' this class='list-item' tagName='li'}}
+                    {{title}}
+                {{/link-to}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="col-sm-9">
+        {{outlet}}
+    </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="product">
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <p>Buy for ${{price}}</p>
+
+    <h3>Reviews</h3>
+    <ul>
+        {{#each review in reviews}}
+            <li>{{review.text}}</li>
+            {{else}}
+                <li>
+                    <p class="text-muted">
+                        <em>No reviews yet. Be the first to write one!</em>
+                    </p>
+                </li>
+
+        {{/each}}
+    </ul>
+</script>
+
+</body>
+</html>
